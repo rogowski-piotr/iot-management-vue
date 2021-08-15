@@ -51,34 +51,17 @@ export default {
   },
   methods: {
     validateAuth() {
-        status = null;
         axios.post(
                 'http://192.168.0.18:8080/login',
                 {"name": this.name,"password": this.password},
                 { headers: {'Content-type': 'application/json',}}
             )
-            .then(response => this.routeByStatus(response.status))
-            .catch(error => this.routeByStatus(error.response.status))
-    },
-    routeByStatus(status) {
-        this.responseStatus = status;
-        switch(status) {
-            case 200:
-                console.log("Authorized successful - response status: " + status)
-                router.push("Signup")
-                break;
-            case 400:
-                console.log("Authorized failed - response status: " + status)
-                
-                break;
-            case 401:
-                console.log("Unauthorized - response status: " + status)
-                break;
-            default:
-                console.log("Occurred unexpected error - response status: " + status)
-                router.push("Signup") // Route to defaulf view for unexpected status
-                break;
-        }
+            .then(response => {
+                if (response.status == 200) {
+                    router.push("Signup")
+                }
+            })
+            .catch(error => this.responseStatus = error.response.status)
     },
   }
 }
