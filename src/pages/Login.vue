@@ -38,7 +38,6 @@
 
 <script>
 import router from '../helpers/router';
-import axios from 'axios';
 import { userService } from '../services';
 
 export default {

@@ -37,8 +37,8 @@ export default {
     },
     created () {
         this.user = JSON.parse(localStorage.getItem('user'));
-        // this.users.loading = true;
-        // userService.getAll().then(response => console.log(response)); //this.users = users);
+        userService.getAll()
+            .then(response => console.log(response)); //this.users = users);
     }
 };
 </script>

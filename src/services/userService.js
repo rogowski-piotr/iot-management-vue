@@ -1,13 +1,10 @@
-// import config from 'config';
-import authHeader from '../helpers/auth-header';
+import { authHeader } from '../helpers/auth-header';
 
 export const userService = {
     login,
     logout,
     getAll
 };
-
-// export default { login, getAll };
 
 function login(name, password) {
     const requestOptions = {
@@ -34,7 +31,6 @@ function login(name, password) {
 
 function logout() {
     console.log('logout')
-    // remove user from local storage to log user out
     localStorage.removeItem('user');
 }
 
@@ -42,8 +38,11 @@ function getAll() {
     console.log('get all')
     const requestOptions = {
         method: 'GET',
+        host: 'http://localhost:80',
         headers: authHeader()
     };
+
+    console.log(requestOptions)
 
     return fetch(`http://localhost:8080/api_auth/users`, requestOptions).then(handleResponse);
 }
