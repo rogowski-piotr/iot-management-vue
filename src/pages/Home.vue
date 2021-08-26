@@ -1,71 +1,37 @@
 <template>
-
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
+  <navbar currentElement="home"/>
+  <div class="row">
+      <div class="col-md-6 offset-md-3">
+          <div>
+              <div>
+                  <h3>Home</h3>
+                  <hr/>
+              </div>
+              <div>
+                  <h1>Hi {{user.username}}!</h1>
+                  <p>You're logged in with Vue.js & Basic HTTP Authentication!!</p>
+                  <h3>Users from secure api end point:</h3>
+                  <em v-if="users.loading">Loading users...</em>
+                  <ul v-if="users.length">
+                      <li v-for="user in users" :key="user.id">
+                          {{user.username}}
+                      </li>
+                  </ul>
+                  <p>
+                      <router-link to="/login">Logout</router-link>
+                  </p>
+              </div>
           </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-    </div>
-  </nav>
-
-<div class="row">
-    <div class="col-md-6 offset-md-3">
-        <div>
-            <div>
-                <h3>Home</h3>
-                <hr/>
-            </div>
-            <div>
-                <h1>Hi {{user.username}}!</h1>
-                <p>You're logged in with Vue.js & Basic HTTP Authentication!!</p>
-                <h3>Users from secure api end point:</h3>
-                <em v-if="users.loading">Loading users...</em>
-                <ul v-if="users.length">
-                    <li v-for="user in users" :key="user.id">
-                        {{user.username}}
-                    </li>
-                </ul>
-                <p>
-                    <router-link to="/login">Logout</router-link>
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
+      </div>
+  </div>
 </template>
 
 <script>
 import { sensorService } from '../services';
+import Navbar from '../components/Navbar';
 
 export default {
+  components: { Navbar },
     data () {
         return {
             user: {},
@@ -73,7 +39,7 @@ export default {
         }
     },
     created () {
-        this.user = JSON.parse(localStorage.getItem('user'));
+      this.user = JSON.parse(localStorage.getItem('user'));
       sensorService.getAll()
             .then(response => console.log(response)); //this.users = users);
     }
