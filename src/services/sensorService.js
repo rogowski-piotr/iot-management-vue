@@ -9,10 +9,9 @@ function getAll() {
     console.log('get all')
     const requestOptions = {
         method: 'GET',
-        host: 'http://localhost:80',
         headers: authHeader()
     };
-    return fetch(`http://localhost:8080/api_auth/sensors`, requestOptions).then(handleResponse);
+    return fetch(`http://192.168.0.102:8080/api_auth/sensors`, requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {

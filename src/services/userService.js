@@ -13,7 +13,7 @@ function login(name, password) {
         body: JSON.stringify({ name, password })
     };
 
-    return fetch(`http://localhost:8080/login`, requestOptions)
+    return fetch(`http://192.168.0.102:8080/login`, requestOptions)
         .then(handleResponse)
         .then(user => {
             if (user) {
@@ -33,10 +33,9 @@ function getAll() {
     console.log('get all')
     const requestOptions = {
         method: 'GET',
-        host: 'http://localhost:80',
         headers: authHeader()
     };
-    return fetch(`http://localhost:8080/api_auth/users`, requestOptions).then(handleResponse);
+    return fetch(`http://192.168.0.102:8080/api_auth/users`, requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {
