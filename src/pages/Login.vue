@@ -50,25 +50,12 @@ export default {
     }
   },
   created () {
-        // reset login status
         userService.logout()
     },
   methods: {
     validateAuth() {
         userService.login(this.name, this.password)
                 .then(router.push("/"));
-        // axios.post(
-        //         // 'http://192.168.0.18:8080/login',
-        //         'http://localhost:8080/login',
-        //         {"name": this.name,"password": this.password},
-        //         { headers: {'Content-type': 'application/json',}}
-        //     )
-        //     .then(response => {
-        //         if (response.status == 200) {
-        //             router.push("/")
-        //         }
-        //     })
-        //     .catch(error => this.responseStatus = error.response.status)
     },
   }
 }
