@@ -21,7 +21,9 @@
                         <a class="dropdown-item" href="#">Action</a>
                         <a class="dropdown-item" href="#">Another action</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">logout</a>
+                        <div class="dropdown-item">
+                            <router-link to="/login">Logout</router-link>
+                        </div>
                     </div>
                 </div>
             </span>
