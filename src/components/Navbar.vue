@@ -16,7 +16,7 @@
                     <a class="nav-link" href="/sensors">Sensors</a>
                 </li>
                 <li class="nav-item" v-bind:class = "{ active: (this.currentElement==='places') }">
-                    <a class="nav-link" href="#">Places</a>
+                    <a class="nav-link" href="/places">Places</a>
                 </li>
             </ul>
             <span class="navbar-text">
