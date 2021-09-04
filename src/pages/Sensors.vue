@@ -7,7 +7,7 @@
                   <h3>Sensors</h3>
                   <hr/>
               </div>
-              <AllSensors currentElement="sensors"/>
+              <AllSensors/>
           </div>
       </div>
   </div>
