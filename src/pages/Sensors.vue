@@ -1,23 +1,25 @@
 <template>
-  <Navbar currentElement="sensors"/>
-  <div class="row">
-      <div class="col-md-6 offset-md-3">
-          <div>
-              <div>
-                  <h3>Sensors</h3>
-                  <hr/>
-              </div>
-              <AllSensors/>
-          </div>
+  <Navbar/>
+  <div class="container-fluid">
+    <div class="row">
+      <Sidebar currentElement="sensors"/>
+      <div class="col-md-9 ml-sm-auto col-lg-10 p-4">
+
+        <h3>Sensors</h3>
+        <hr/>
+        <AllSensors/>
+          
       </div>
+    </div>
   </div>
 </template>
 
 <script>
 import Navbar from '../components/Navbar';
+import Sidebar from '../components/Sidebar';
 import AllSensors from '../components/AllSensors';
 
 export default {
-  components: { Navbar, AllSensors },
+  components: { Navbar, Sidebar, AllSensors },
 };
 </script>
