@@ -3,9 +3,9 @@
   <div class="container-fluid">
     <div class="row">
       <Sidebar currentElement="places"/>
-      <div class="ml-sm-auto col-lg-10 offset-1 p-4">
+      <div class="ml-sm-auto col-lg-10 p-4">
 
-        <h3>Sensors</h3>
+        <h3>Places</h3>
         <hr/>
         <AllPlaces/>
           
