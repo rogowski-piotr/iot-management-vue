@@ -46,7 +46,18 @@ export default {
     },
     methods: {
         transformMeasurementType: function(str) {
-            return str.replaceAll('_',' ');
+            switch (str) {
+                case 'TEMPERATURE_AND_HUMIDITY':
+                    return '🌡💧 Temperature & Humidity';
+                case 'TEMPERATURE ':
+                    return '🌡 Temperature';
+                case 'HUMIDITY':
+                    return '💧 Humidity';
+                case 'SOIL_MOISTURE':
+                    return '🌱💧 Soil Moisture';
+                default:
+                    return '🤷‍♂️ CAN NOT DEFINE'
+            }
         }
   }
 }
