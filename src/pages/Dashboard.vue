@@ -2,7 +2,7 @@
   <Navbar/>
   <div class="container-fluid">
     <div class="row">
-      <Sidebar currentElement="home"/>
+      <Sidebar currentElement="dashboard"/>
       <div class="col-md-9 ml-sm-auto col-lg-10 p-4">
 
         <h3>Home</h3>

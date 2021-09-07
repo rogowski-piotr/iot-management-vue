@@ -1,12 +1,12 @@
 <template>
     <div>
-        <nav class="col-md-1 d-none d-md-block bg-light sidebar" style="position: fixed; font-size: 20px">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar" style="position: fixed; font-size: 20px">
             <div class="sidebar-sticky active sticky-top vh-100 bg-light">
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link pt-4" v-bind:class = "{ 'text-dark font-weight-bold': (this.currentElement==='home') }" href="/">
+                    <a class="nav-link pt-4" v-bind:class = "{ 'text-dark font-weight-bold': (this.currentElement==='dashboard') }" href="/">
                         <i class="fa fa-home" aria-hidden="true"></i>
-                        Home
+                        Dashboard
                     </a>
                 </li>
                 <li class="nav-item">
@@ -19,6 +19,18 @@
                     <a class="nav-link pt-3" v-bind:class = "{ 'text-dark font-weight-bold': (this.currentElement==='places') }" href="/places">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                         Places
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link pt-3" v-bind:class = "{ 'text-dark font-weight-bold': (this.currentElement==='users') }" href="/users">
+                        <i class="fa fa-users" aria-hidden="true"></i>
+                        Users
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link pt-3" v-bind:class = "{ 'text-dark font-weight-bold': (this.currentElement==='settings') }" href="/settings">
+                        <i class="fa fa-cog" aria-hidden="true"></i>
+                        Settings
                     </a>
                 </li>
             </ul>

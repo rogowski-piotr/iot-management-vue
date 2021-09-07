@@ -1,14 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Login from '../pages/Login.vue';
 import Signup from '../pages/Signup.vue';
-import Home from '../pages/Home.vue';
+import Dashboard from '../pages/Dashboard.vue';
 import Sensors from '../pages/Sensors.vue'
 import Places from '../pages/Places.vue';
 
 const routes = [
     { path: '/login', component: Login },
     { path: '/signup', component: Signup },
-    { path: '/', component: Home },
+    { path: '/', component: Dashboard },
     { path: '/sensors', component: Sensors },
     { path: '/places', component: Places },
     // { path: '*', redirect: '/' },
