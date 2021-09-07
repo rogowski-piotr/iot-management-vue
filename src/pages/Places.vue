@@ -7,7 +7,9 @@
 
         <h3>Places</h3>
         <hr/>
-        <AllPlaces/>
+        <div class="col-lg-6 offset-lg-2">
+          <AllPlaces/>
+        </div>
           
       </div>
     </div>

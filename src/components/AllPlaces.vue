@@ -1,6 +1,6 @@
 <template>
     <div>
-        <table class="table table-bordered">
+        <table class="table table-hover text-center">
             <thead>
             <tr>
                 <th scope="col">Name</th>
