@@ -1,30 +1,39 @@
 <template>
-    <div class="alert alert-warning" v-show="errorMessage != null" role="alert" id="alert-incorrect-data">
+
+    
+    <div class="alert alert-warning m-0" v-show="errorMessage != null" role="alert" id="alert-incorrect-data">
         <h4 class="alert-heading">Incorrect login details!</h4>
         <div v-for="msg in errorMessage" :key="msg.id">
             <hr>
             {{ msg }}
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-4 offset-md-4">
-            <div>
-                <div>
-                    <h3>Login</h3>
-                    <hr/>
+    <div class="bg-secondary vh-100"></div>
+
+    <div class="modal fade show" aria-odal="true" style="display: block;">
+        <div class="modal-dialog modal-login">
+            <div class="modal-content bg-light">
+                <div class="modal-header">				
+                    <h4 class="modal-title">Login</h4>
                 </div>
-                <div class="form-group">
-                    <label>Email or Username</label>
-                    <input type="text" class="form-control" v-model="name"/>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <i class="fa fa-user p-1"></i>
+                        <label>Email or Username</label>
+                        <input type="text" class="form-control" placeholder="Username" v-model="name"/>
+                    </div>
+                    <div class="form-group">
+                        <i class="fa fa-lock p-1"></i>
+                        <label>Password</label>
+                        <input type="password" class="form-control" placeholder="Password" v-model="password"/>				
+                    </div>
+                    <div class="form-group">
+                        <button @click="validateAuth" type="submit" class="btn btn-primary btn-block btn-lg">Login</button>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" class="form-control" v-model="password"/>
+                <div class="modal-footer">
+                    <a href="#">forgot password?</a> or <a href="/signup">signup</a>
                 </div>
-                <div class="my-3">
-                    <button @click="validateAuth" type="submit" class="btn btn-primary">Login</button>
-                </div>
-                <a href="">forgot password?</a> or <a href="/signup">signup</a>
             </div>
         </div>
     </div>
