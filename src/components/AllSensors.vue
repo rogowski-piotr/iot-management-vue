@@ -1,6 +1,6 @@
 <template>
     <div>
-        <table class="table table-bordered">
+        <table class="table table-hover text-center">
             <thead>
             <tr>
                 <th scope="col">Name</th>
@@ -14,8 +14,11 @@
             <tr v-for="sensor in sensors" :key="sensor.id">
                 <td>{{ sensor.name }}</td>
                 <td>{{ sensor.socket }}</td>
-                <td>{{ sensor.measurementType }}</td>
-                <td>{{ sensor.isActive }}</td>
+                <td>{{ transformMeasurementType(sensor.measurementType) }}</td>
+                <td>
+                    <div v-if="sensor.isActive" class="badge badge-pill badge-success" style="font-size: 20px">{{ sensor.isActive }}</div>
+                    <div v-if="! sensor.isActive" class="badge badge-pill badge-danger" style="font-size: 20px">{{ sensor.isActive }}</div>
+                </td>
                 <td>
                     <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>
                     <button type="button" class="btn btn-success mx-1"><i class="fas fa-edit"></i></button>
@@ -40,7 +43,12 @@ export default {
     mounted () {
         sensorService.getAll()
             .then(response => this.sensors = response);
-    }
+    },
+    methods: {
+        transformMeasurementType: function(str) {
+            return str.replaceAll('_',' ');
+        }
+  }
 }
 </script>
 
