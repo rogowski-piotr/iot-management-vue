@@ -5,6 +5,7 @@ import Dashboard from '../pages/Dashboard.vue';
 import Sensors from '../pages/Sensors.vue'
 import Places from '../pages/Places.vue';
 import Users from '../pages/Users.vue';
+import UserSettings from '../pages/UserSettings.vue';
 import Settings from '../pages/Settings.vue';
 
 const routes = [
@@ -14,6 +15,7 @@ const routes = [
     { path: '/sensors', component: Sensors },
     { path: '/places', component: Places },
     { path: '/users', component: Users },
+    { path: '/user-settings', component: UserSettings },
     { path: '/settings', component: Settings },
     // { path: '*', redirect: '/' },
 ];
