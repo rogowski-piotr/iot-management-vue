@@ -2,8 +2,18 @@ import { authHeader } from '../helpers/auth-header';
 import { userService } from '.';
 
 export const measurementService = {
-    getLastMeasurements
+    getLastMeasurements,
+    getLastMeasurementsAll
 };
+
+function getLastMeasurementsAll() {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+    // return fetch(`http://192.168.0.102:8080/api_auth/measurements`, requestOptions).then(handleResponse);
+    return fetch(`http://192.168.0.18:8080/api_auth/measurements`, requestOptions).then(handleResponse);
+}
 
 function getLastMeasurements(id) {
     const requestOptions = {
