@@ -25,12 +25,13 @@ export default defineComponent({
                 this.data = response;
                 console.log(this.data)
 
-                let labels = [];
+                let labels = new Array;
                 this.data.forEach(measurement => {
                     if (! labels.includes(measurement.date)) {
                         labels.push(measurement.date)
                     }
                 });
+                labels.reverse();
 
                 let datasets = this.generateDatasets(response)
 
@@ -67,11 +68,14 @@ export default defineComponent({
                 backgroundColor: COLOURS[i]
             }
 
+            let reversedData = new Array;
             data.forEach(measurement => {
                 if (type === measurement.measurementType) {
-                    datasets[i].data.push(measurement.value)
+                    reversedData.push(measurement.value)
                 }
             });
+            
+            datasets[i].data = reversedData.reverse();
         }
         return datasets;
     }
