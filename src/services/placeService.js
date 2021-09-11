@@ -11,7 +11,8 @@ function getAll() {
         method: 'GET',
         headers: authHeader()
     };
-    return fetch(`http://192.168.0.102:8080/api_auth/places`, requestOptions).then(handleResponse);
+    // return fetch(`http://192.168.0.102:8080/api_auth/places`, requestOptions).then(handleResponse);
+    return fetch(`http://192.168.0.18:8080/api_auth/places`, requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {
