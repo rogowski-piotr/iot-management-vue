@@ -9,8 +9,13 @@
         <hr/>
         <a href="/sensors"><i class="fa fa-chevron-left" aria-hidden="true"></i> back</a>
         <hr/>
-        
-        
+        <div v-if="sensorType === 'SOIL_MOISTURE'">
+          <ChartSensor v-bind:info='{sensorId: this.sensorId, type: "SOIL_MOISTURE"}' :width="85" :height="40"/>
+        </div>
+        <div v-if="sensorType === 'TEMPERATURE_AND_HUMIDITY'">
+          <ChartSensor v-bind:info='{sensorId: this.sensorId, type: "HUMIDITY"}' :width="85" :height="20"/>
+          <ChartSensor v-bind:info='{sensorId: this.sensorId, type: "TEMPERATURE"}' :width="85" :height="20"/>
+        </div>
           
       </div>
     </div>
@@ -20,8 +25,21 @@
 <script>
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
+import ChartSensor from '../components/ChartSensor';
+import { sensorService } from '../services';
 
 export default {
-  components: { Navbar, Sidebar },
+  components: { Navbar, Sidebar, ChartSensor },
+  data () {
+        return {
+            sensorId: null,
+            sensorType: null,
+        }
+    },
+    created () {
+      this.sensorId = this.$route.params.id;
+      sensorService.getOne(this.sensorId)
+        .then(response => this.sensorType = response.measurementType)
+    }
 };
 </script>
