@@ -10,9 +10,12 @@
   "dependencies": {
     "axios": "^0.21.1",
     "bootstrap-icons": "^1.5.0",
+    "chart.js": "^3.5.1",
     "core-js": "^3.6.5",
     "vue": "^3.1.5",
-    "vue-router": "^4.0.11"
+    "vue-chartjs": "^3.5.1",
+    "vue-router": "^4.0.11",
+    "vue3-chart-v2": "^0.8.3"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
