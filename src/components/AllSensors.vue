@@ -17,7 +17,7 @@
                 <td>{{ transformMeasurementType(sensor.measurementType) }}</td>
                 <td>
                     <div v-if="sensor.isActive" class="badge badge-pill badge-success" style="font-size: 20px">{{ sensor.isActive }}</div>
-                    <div v-if="! sensor.isActive" class="badge badge-pill badge-danger" style="font-size: 20px">{{ sensor.isActive }}</div>
+                    <div v-else class="badge badge-pill badge-danger" style="font-size: 20px">{{ sensor.isActive }}</div>
                 </td>
                 <td>
                     <a class="btn btn-info text-white mx-1" v-bind:href="'/sensors/' + sensor.id + '/measurements'"><i class="fa fa-line-chart"></i></a>
