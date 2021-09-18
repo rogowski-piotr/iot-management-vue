@@ -17,10 +17,10 @@
                   <ChartSensor v-bind:info='{sensorId: 2, type: "TEMPERATURE"}' :width="100" :height="100"/>
                 </div>
                 <div class="col-md-4">
-                  <ChartSensor v-bind:info='{sensorId: 2, type: "TEMPERATURE"}' :width="100" :height="100"/>
+                  <ChartSensor v-bind:info='{sensorId: 2, type: "HUMIDITY"}' :width="100" :height="100"/>
                 </div>
                 <div class="col-md-4">
-                  <ChartSensor v-bind:info='{sensorId: 2, type: "TEMPERATURE"}' :width="100" :height="100"/>
+                  <ChartSensor v-bind:info='{sensorId: 1, type: "SOIL_MOISTURE"}' :width="100" :height="100"/>
                 </div>
               </div>
             </div>
@@ -30,10 +30,10 @@
                   <ChartSensor v-bind:info='{sensorId: 2, type: "TEMPERATURE"}' :width="100" :height="100"/>
                 </div>
                 <div class="col-md-4">
-                  <ChartSensor v-bind:info='{sensorId: 2, type: "TEMPERATURE"}' :width="100" :height="100"/>
+                  <ChartSensor v-bind:info='{sensorId: 2, type: "HUMIDITY"}' :width="100" :height="100"/>
                 </div>
                 <div class="col-md-4">
-                  <ChartSensor v-bind:info='{sensorId: 2, type: "TEMPERATURE"}' :width="100" :height="100"/>
+                  <ChartSensor v-bind:info='{sensorId: 1, type: "SOIL_MOISTURE"}' :width="100" :height="100"/>
                 </div>
               </div>
             </div>
@@ -48,12 +48,16 @@
           </a>
         </div>
 
-          <h3>Last Measurements</h3>
-          <div class="row">
-            <div class="col-md-4">
-              <LastMeasurementTable/>
-            </div>
+        <div class="row">
+          <div class="col-md-4">
+            <h3>Last Measurements</h3>
+            <LastMeasurementTable/>
           </div>
+          <div class="col-md-8">
+            <h3>Requests today</h3>
+            <SuccessfulRequestRatioChart/>
+          </div>
+        </div>
           
       </div>
     </div>
@@ -63,23 +67,11 @@
 <script>
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
-import { sensorService, measurementService } from '../services';
 import ChartSensor from '../components/ChartSensor';
+import SuccessfulRequestRatioChart from '../components/SuccessfulRequestRatioChart';
 import LastMeasurementTable from '../components/LastMeasurementTable';
 
 export default {
-  components: { Navbar, Sidebar, ChartSensor, LastMeasurementTable },
-    data () {
-        return {
-            user: {},
-            sensors: [],
-        }
-    },
-    created () {
-      sensorService.getAll()
-        .then(response => this.sensors = response);
-      measurementService.getLastMeasurementsAll()
-        .then(response => this.lastMeasurements = response);
-    }
+  components: { Navbar, Sidebar, ChartSensor, SuccessfulRequestRatioChart, LastMeasurementTable },
 };
 </script>
