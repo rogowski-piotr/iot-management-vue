@@ -50,7 +50,12 @@ export default defineComponent({
   },
   methods: {
     generateDatasets(data) {
-        const COLOURS = ['#f87979', '#467474'];
+        const COLOURS = {
+            'TEMPERATURE': '#f87979',
+            'HUMIDITY': '#33CEFF',
+            'SOIL_MOISTURE': '#39C688',
+            'default': '#8B8B8B'
+        };
 
         let typeLabels = [];
         data.forEach(measurement => {
@@ -62,10 +67,11 @@ export default defineComponent({
         let datasets = []
         for (let i = 0; i < typeLabels.length; i++) {
             let type = typeLabels[i]
+            let colour = type in COLOURS ? COLOURS[type] : COLOURS['default'];
             datasets[i] = {
                 label: type,
                 data: [],
-                backgroundColor: COLOURS[i]
+                backgroundColor: colour
             }
 
             let reversedData = new Array;
