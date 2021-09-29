@@ -1,0 +1,94 @@
+<template>
+  <Navbar/>
+  <div class="container-fluid">
+    <div class="row">
+      <Sidebar currentElement="sensors"/>
+      <div class="col-md-9 ml-sm-auto col-lg-10 p-4">
+
+        <a href="/sensors"><i class="fa fa-chevron-left" aria-hidden="true"></i> back</a>
+        <hr/>
+        <h3>Sensor details: {{ this.sensor.name }}</h3>
+        <hr/>
+
+        <div class="col-lg-6 offset-lg-2">
+
+            <table class="table table-hover text-left">
+                <tr>
+                    <td></td>
+                    <th scope="row">Name</th>
+                    <td></td>
+                    <td colspan="2" v-if="sensor.name">{{ this.sensor.name }}</td>
+                    <td colspan="2" v-else v-html="noDataLabel"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <th scope="row">Socket</th>
+                    <td></td>
+                    <td colspan="2" v-if="sensor.socket">{{ this.sensor.socket }}</td>
+                    <td colspan="2" v-else v-html="noDataLabel"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <th scope="row">Active</th>
+                    <td></td>
+                    <td colspan="2" v-if="sensor.isActive != null">{{ this.sensor.isActive }}</td>
+                    <td colspan="2" v-else v-html="noDataLabel"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <th scope="row">Measurement Type</th>
+                    <td></td>
+                    <td colspan="2" v-if="sensor.measurementType">{{ this.sensor.measurementType }}</td>
+                    <td colspan="2" v-else v-html="noDataLabel"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <th scope="row">Measurements Frequency</th>
+                    <td></td>
+                    <td colspan="2" v-if="sensor.measurementsFrequency">{{ this.sensor.measurementsFrequency }}</td>
+                    <td colspan="2" v-else v-html="noDataLabel"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <th scope="row">Last Measurment</th>
+                    <td></td>
+                    <td colspan="2" v-if="sensor.lastMeasurment">{{ this.sensor.lastMeasurment }}</td>
+                    <td colspan="2" v-else v-html="noDataLabel"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <th scope="row">Actual Position</th>
+                    <td></td>
+                    <td colspan="2" v-if="sensor.actualPosition.description">{{ this.sensor.actualPosition.description }}</td>
+                    <td colspan="2" v-else v-html="noDataLabel"></td>
+                </tr>
+            </table>
+
+        </div>
+          
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import Navbar from '../components/Navbar';
+import Sidebar from '../components/Sidebar';
+import { sensorService } from '../services';
+
+export default {
+    components: { Navbar, Sidebar },
+    data () {
+        return {
+            sensorId: null,
+            sensor: null,
+            noDataLabel: '<small>no data 😥</small>'
+        }
+    },
+    created () {
+        this.sensorId = this.$route.params.id;
+        sensorService.getOne(this.sensorId)
+            .then(response => this.sensor = response)
+    }
+};
+</script>
