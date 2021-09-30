@@ -6,6 +6,7 @@ import Sensors from '../pages/Sensors.vue'
 import SensorDetails from '../pages/SensorDetails.vue'
 import SensorMeasurements from '../pages/SensorMeasurements.vue';
 import Places from '../pages/Places.vue';
+import PlaceDetails from '../pages/PlaceDetails.vue'
 import Users from '../pages/Users.vue';
 import UserSettings from '../pages/UserSettings.vue';
 import Settings from '../pages/Settings.vue';
@@ -18,6 +19,7 @@ const routes = [
     { path: '/sensors/:id', component: SensorDetails },
     { path: '/sensors/:id/measurements', component: SensorMeasurements },
     { path: '/places', component: Places },
+    { path: '/places/:id', component: PlaceDetails },
     { path: '/users', component: Users },
     { path: '/user-settings', component: UserSettings },
     { path: '/settings', component: Settings },
