@@ -59,7 +59,7 @@
                     <td></td>
                     <th scope="row">Actual Position</th>
                     <td></td>
-                    <td colspan="2" v-if="sensor.actualPosition.description">{{ this.sensor.actualPosition.description }}</td>
+                    <td colspan="2" v-if="sensor.actualPositionDescription">{{ this.sensor.actualPositionDescription }}</td>
                     <td colspan="2" v-else v-html="noDataLabel"></td>
                 </tr>
             </table>
@@ -81,14 +81,30 @@ export default {
     data () {
         return {
             sensorId: null,
-            sensor: null,
+            sensor: {
+                name: null,
+                socket: null,
+                isActive: null,
+                measurementType: null,
+                measurementsFrequency: null,
+                lastMeasurment: null,
+                actualPositionDescription: null,
+            },
             noDataLabel: '<small>no data 😥</small>'
         }
     },
     created () {
         this.sensorId = this.$route.params.id;
         sensorService.getOne(this.sensorId)
-            .then(response => this.sensor = response)
+            .then(response => {
+                this.sensor.name = response.name
+                this.sensor.socket = response.socket
+                this.sensor.isActive = response.isActive
+                this.sensor.measurementType = response.measurementType
+                this.sensor.measurementsFrequency = response.measurementsFrequency
+                this.sensor.lastMeasurment = response.lastMeasurment
+                this.sensor.actualPositionDescription = response.actualPosition.description
+            })
     }
 };
 </script>

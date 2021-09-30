@@ -18,28 +18,28 @@
                     <th scope="row">Description</th>
                     <td></td>
                     <td colspan="2" v-if="place.description">{{ this.place.description }}</td>
-                    <td colspan="2" v-else><small>no data 😥</small></td>
+                    <td colspan="2" v-else v-html="noDataLabel"></td>
                 </tr>
                 <tr>
                     <td></td>
                     <th scope="row">coordinate X</th>
                     <td></td>
                     <td colspan="2" v-if="place.positionX">{{ this.place.positionX }}</td>
-                    <td colspan="2" v-else><small>no data 😥</small></td>
+                    <td colspan="2" v-else v-html="noDataLabel"></td>
                 </tr>
                 <tr>
                     <td></td>
                     <th scope="row">coordinate Y</th>
                     <td></td>
                     <td colspan="2" v-if="place.positionY">{{ this.place.positionY }}</td>
-                    <td colspan="2" v-else><small>no data 😥</small></td>
+                    <td colspan="2" v-else v-html="noDataLabel"></td>
                 </tr>
                 <tr>
                     <td></td>
                     <th scope="row">coordinate Z</th>
                     <td></td>
                     <td colspan="2" v-if="place.positionZ">{{ this.place.positionZ }}</td>
-                    <td colspan="2" v-else><small>no data 😥</small></td>
+                    <td colspan="2" v-else v-html="noDataLabel"></td>
                 </tr>
             </table>
 
@@ -59,14 +59,25 @@ export default {
     components: { Navbar, Sidebar },
     data () {
         return {
+            noDataLabel: '<small>no data 😥</small>',
             placeId: null,
-            place: null,
+            place: {
+                description: null,
+                positionX: null,
+                positionY: null,
+                positionZ: null
+            }
         }
     },
     created () {
         this.placeId = this.$route.params.id;
         placeService.getOne(this.placeId)
-            .then(response => this.place = response)
+            .then(response => {
+                this.place.description = response.description
+                this.place.positionX = response.positionX
+                this.place.positionY = response.positionY
+                this.place.positionZ = response.positionZ
+            })
     }
 };
 </script>
