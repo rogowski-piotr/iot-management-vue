@@ -15,9 +15,9 @@
                 <td>{{ user.email }}</td>
                 <td>{{ user.role.name }}</td>
                 <td>
-                    <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>
-                    <button type="button" class="btn btn-success mx-1"><i class="fas fa-edit"></i></button>
-                    <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+                    <a class="btn btn-primary text-white" v-bind:href="'/users/' + user.id"><i class="far fa-eye"></i></a>
+                    <a class="btn btn-success text-white mx-1"><i class="fas fa-edit"></i></a>
+                    <a class="btn btn-danger text-white"><i class="far fa-trash-alt"></i></a>
                 </td>
             </tr>
             </tbody>

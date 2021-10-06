@@ -8,6 +8,7 @@ import SensorMeasurements from '../pages/SensorMeasurements.vue';
 import Places from '../pages/Places.vue';
 import PlaceDetails from '../pages/PlaceDetails.vue'
 import Users from '../pages/Users.vue';
+import UserDetails from '../pages/UserDetails.vue';
 import UserSettings from '../pages/UserSettings.vue';
 import Settings from '../pages/Settings.vue';
 
@@ -21,6 +22,7 @@ const routes = [
     { path: '/places', component: Places },
     { path: '/places/:id', component: PlaceDetails },
     { path: '/users', component: Users },
+    { path: '/users/:id', component: UserDetails },
     { path: '/user-settings', component: UserSettings },
     { path: '/settings', component: Settings },
     // { path: '*', redirect: '/' },

@@ -3,7 +3,8 @@ import { authHeader } from '../helpers/auth-header';
 export const userService = {
     login,
     logout,
-    getAll
+    getAll,
+    getOne
 };
 
 function login(name, password) {
@@ -38,6 +39,16 @@ function getAll() {
     };
     // return fetch(`http://192.168.0.102:8080/api_auth/users`, requestOptions).then(handleResponse);
     return fetch(`http://192.168.0.18:8080/api_auth/users`, requestOptions).then(handleResponse);
+}
+
+function getOne(id) {
+    console.log('get one')
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+    // return fetch(`http://192.168.0.102:8080/api_auth/users/` + id, requestOptions).then(handleResponse);
+    return fetch(`http://192.168.0.18:8080/api_auth/users/` + id, requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {
