@@ -22,7 +22,7 @@
                 <td>
                     <a class="btn btn-info text-white mx-1" v-bind:href="'/sensors/' + sensor.id + '/measurements'"><i class="fa fa-line-chart"></i></a>
                     <a class="btn btn-primary text-white" v-bind:href="'/sensors/' + sensor.id"><i class="far fa-eye"></i></a>
-                    <a class="btn btn-success text-white mx-1"><i class="fas fa-edit"></i></a>
+                    <a class="btn btn-success text-white mx-1" v-bind:href="'/sensors/' + sensor.id + '/edit'"><i class="fas fa-edit"></i></a>
                     <a class="btn btn-danger text-white"><i class="far fa-trash-alt"></i></a>
                 </td>
             </tr>
