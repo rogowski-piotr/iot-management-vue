@@ -17,7 +17,8 @@
                 <td>
                     <a class="btn btn-primary text-white" v-bind:href="'/users/' + user.id"><i class="far fa-eye"></i></a>
                     <a class="btn btn-success text-white mx-1" v-bind:href="'/users/' + user.id + '/edit'"><i class="fas fa-edit"></i></a>
-                    <a class="btn btn-danger text-white"><i class="far fa-trash-alt"></i></a>
+                    <button v-if="getCurrentUserId() != user.id" class="btn btn-danger text-white" @click="deleteOne(user.id)"><i class="far fa-trash-alt"></i></button>
+                    <a v-else aria-disabled="true" class="btn btn-danger text-white disabled"><i class="far fa-trash-alt"></i></a>
                 </td>
             </tr>
             </tbody>
@@ -38,6 +39,15 @@ export default {
     mounted () {
         userService.getAll()
             .then(response => this.users = response);
+    },
+    methods: {
+        getCurrentUserId() {
+            return userService.getCurrentUser().id
+        },
+        deleteOne(id) {
+            userService.deleteOne(id)
+            this.$router.go(0);
+        }
     }
 }
 </script>

@@ -7,6 +7,8 @@ export const userService = {
     getOne,
     getAllRoles,
     update,
+    deleteOne,
+    getCurrentUser,
 };
 
 function login(name, password) {
@@ -26,6 +28,10 @@ function login(name, password) {
             }
             return user;
         });
+}
+
+function getCurrentUser() {
+    return JSON.parse(localStorage.getItem('user'))
 }
 
 function logout() {
@@ -72,6 +78,16 @@ function update(id, payload) {
     };
     // return fetch(`http://192.168.0.102:8080/api_auth/users/` + id, requestOptions);
     return fetch(`http://192.168.0.18:8080/api_auth/users/` + id, requestOptions)
+}
+
+function deleteOne(id) {
+    console.log('delete')
+    const requestOptions = {
+        method: 'DELETE',
+        headers: authHeader(),
+    };
+    // return fetch(`http://192.168.0.102:8080/api_auth/users/` + id, requestOptions);
+    return fetch(`http://192.168.0.18:8080/api_auth/users/` + id, requestOptions);
 }
 
 function handleResponse(response) {

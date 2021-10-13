@@ -4,7 +4,8 @@ import { userService } from '.';
 export const sensorService = {
     getAll,
     getOne,
-    update
+    update,
+    deleteOne
 };
 
 function getAll() {
@@ -33,6 +34,16 @@ function update(id, sensor) {
         method: 'PUT',
         headers: authHeader(),
         body: JSON.stringify(sensor)
+    };
+    // return fetch(`http://192.168.0.102:8080/api_auth/sensors/` + id, requestOptions);
+    return fetch(`http://192.168.0.18:8080/api_auth/sensors/` + id, requestOptions);
+}
+
+function deleteOne(id) {
+    console.log('delete')
+    const requestOptions = {
+        method: 'DELETE',
+        headers: authHeader(),
     };
     // return fetch(`http://192.168.0.102:8080/api_auth/sensors/` + id, requestOptions);
     return fetch(`http://192.168.0.18:8080/api_auth/sensors/` + id, requestOptions);

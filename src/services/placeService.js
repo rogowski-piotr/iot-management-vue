@@ -4,7 +4,8 @@ import { userService } from '.';
 export const placeService = {
     getAll,
     getOne,
-    update
+    update,
+    deleteOne
 };
 
 function getAll() {
@@ -33,6 +34,16 @@ function update(id, place) {
         method: 'PUT',
         headers: authHeader(),
         body: JSON.stringify(place)
+    };
+    // return fetch(`http://192.168.0.102:8080/api_auth/places/` + id, requestOptions);
+    return fetch(`http://192.168.0.18:8080/api_auth/places/` + id, requestOptions);
+}
+
+function deleteOne(id) {
+    console.log('delete')
+    const requestOptions = {
+        method: 'DELETE',
+        headers: authHeader(),
     };
     // return fetch(`http://192.168.0.102:8080/api_auth/places/` + id, requestOptions);
     return fetch(`http://192.168.0.18:8080/api_auth/places/` + id, requestOptions);
