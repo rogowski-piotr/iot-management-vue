@@ -12,7 +12,7 @@
                 <td>{{ place.description }}</td>
                 <td>
                     <a class="btn btn-primary text-white" v-bind:href="'/places/' + place.id"><i class="far fa-eye"></i></a>
-                    <a class="btn btn-success text-white mx-1"><i class="fas fa-edit"></i></a>
+                    <a class="btn btn-success text-white mx-1" v-bind:href="'/places/' + place.id + '/edit'"><i class="fas fa-edit"></i></a>
                     <a class="btn btn-danger text-white"><i class="far fa-trash-alt"></i></a>
                 </td>
             </tr>

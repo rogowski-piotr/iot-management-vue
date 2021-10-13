@@ -3,7 +3,8 @@ import { userService } from '.';
 
 export const placeService = {
     getAll,
-    getOne
+    getOne,
+    update
 };
 
 function getAll() {
@@ -24,6 +25,17 @@ function getOne(id) {
     };
     // return fetch(`http://192.168.0.102:8080/api_auth/sensors/` + id, requestOptions).then(handleResponse);
     return fetch(`http://192.168.0.18:8080/api_auth/places/` + id, requestOptions).then(handleResponse);
+}
+
+function update(id, place) {
+    console.log('update')
+    const requestOptions = {
+        method: 'PUT',
+        headers: authHeader(),
+        body: JSON.stringify(place)
+    };
+    // return fetch(`http://192.168.0.102:8080/api_auth/places/` + id, requestOptions);
+    return fetch(`http://192.168.0.18:8080/api_auth/places/` + id, requestOptions);
 }
 
 function handleResponse(response) {
