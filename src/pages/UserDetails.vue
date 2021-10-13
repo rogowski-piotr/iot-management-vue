@@ -67,7 +67,7 @@ export default {
             .then(response => {
                 this.user.username = response.username
                 this.user.email = response.email
-                this.user.role = response.role
+                this.user.role = response.role.name
             })
     }
 };

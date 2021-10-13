@@ -4,7 +4,9 @@ export const userService = {
     login,
     logout,
     getAll,
-    getOne
+    getOne,
+    getAllRoles,
+    update,
 };
 
 function login(name, password) {
@@ -49,6 +51,27 @@ function getOne(id) {
     };
     // return fetch(`http://192.168.0.102:8080/api_auth/users/` + id, requestOptions).then(handleResponse);
     return fetch(`http://192.168.0.18:8080/api_auth/users/` + id, requestOptions).then(handleResponse);
+}
+
+function getAllRoles() {
+    console.log('get all roles')
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+    // return fetch(`http://192.168.0.102:8080/api_auth/users/roles`, requestOptions).then(handleResponse);
+    return fetch(`http://192.168.0.18:8080/api_auth/users/roles`, requestOptions).then(handleResponse);
+}
+
+function update(id, payload) {
+    console.log('update')
+    const requestOptions = {
+        method: 'PUT',
+        headers: authHeader(),
+        body: JSON.stringify(payload)
+    };
+    // return fetch(`http://192.168.0.102:8080/api_auth/users/` + id, requestOptions);
+    return fetch(`http://192.168.0.18:8080/api_auth/users/` + id, requestOptions)
 }
 
 function handleResponse(response) {
