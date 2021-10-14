@@ -21,7 +21,7 @@
                         Places
                     </a>
                 </li>
-                <li class="nav-item">
+                <li v-if="checkCurrentUserIsAdmin()" class="nav-item">
                     <a class="nav-link pt-3" v-bind:class = "{ 'text-dark font-weight-bold': (this.currentElement==='users') }" href="/users">
                         <i class="fa fa-users" aria-hidden="true"></i>
                         Users
@@ -40,11 +40,18 @@
 </template>
 
 <script>
+import { userService } from '../services';
+
 export default {
     name: 'Sidebar',
     props: {
         currentElement: String
     },
+    methods: {
+        checkCurrentUserIsAdmin() {
+            return userService.getCurrentUser().role.name === 'ADMIN'
+        }
+    }
 }
 </script>
 
