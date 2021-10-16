@@ -5,6 +5,7 @@ export const sensorSettingsService = {
     getAll,
     getOne,
     deleteOne,
+    add,
     update,
 };
 
@@ -36,6 +37,17 @@ function deleteOne(id) {
     };
     // return fetch(`http://192.168.0.102:8080/api_auth/sensors/settings/` + id, requestOptions);
     return fetch(`http://192.168.0.18:8080/api_auth/sensors/settings/` + id, requestOptions);
+}
+
+function add(settings) {
+    console.log('update')
+    const requestOptions = {
+        method: 'POST',
+        headers: authHeader(),
+        body: JSON.stringify(settings)
+    };
+    // return fetch(`http://192.168.0.102:8080/api_auth/sensors/settings`, requestOptions);
+    return fetch(`http://192.168.0.18:8080/api_auth/sensors/settings`, requestOptions);
 }
 
 function update(id, settings) {
