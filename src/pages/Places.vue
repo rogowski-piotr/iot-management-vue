@@ -7,6 +7,7 @@
 
         <h3>Places</h3>
         <hr/>
+        <a href="/places/add" type="button" class="btn btn-warning">Add new place</a>
         <div class="col-lg-6 offset-lg-2">
           <AllPlaces/>
         </div>
