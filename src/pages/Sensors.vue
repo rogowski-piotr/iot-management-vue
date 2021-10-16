@@ -7,6 +7,7 @@
 
         <h3>Sensors</h3>
         <hr/>
+        <a href="/sensors/add" type="button" class="btn btn-warning">Add new sensor</a>
         <AllSensors/>
           
       </div>
@@ -23,3 +24,8 @@ export default {
   components: { Navbar, Sidebar, AllSensors },
 };
 </script>
+<style scoped>
+  .btn {
+    margin: 15px;
+  }
+</style>

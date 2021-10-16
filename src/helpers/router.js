@@ -3,6 +3,7 @@ import Login from '../pages/Login.vue';
 import Signup from '../pages/Signup.vue';
 import Dashboard from '../pages/Dashboard.vue';
 import Sensors from '../pages/Sensors.vue'
+import SensorAdd from '../pages/SensorAdd.vue'
 import SensorDetails from '../pages/SensorDetails.vue'
 import SensorEdit from '../pages/SensorEdit.vue'
 import SensorMeasurements from '../pages/SensorMeasurements.vue';
@@ -22,6 +23,7 @@ const routes = [
     { path: '/signup', component: Signup },
     { path: '/', component: Dashboard },
     { path: '/sensors', component: Sensors },
+    { path: '/sensors/add', component: SensorAdd },
     { path: '/sensors/:id', component: SensorDetails },
     { path: '/sensors/:id/edit', component: SensorEdit },
     { path: '/sensors/:id/measurements', component: SensorMeasurements },
