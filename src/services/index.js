@@ -4,3 +4,4 @@ export * from './placeService';
 export * from './measurementService';
 export * from './statsService';
 export * from './measurementParamService';
+export * from './sensorSettingsService';

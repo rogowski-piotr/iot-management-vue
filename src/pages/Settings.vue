@@ -7,7 +7,7 @@
 
         <h3>Settings</h3>
         <hr/>
-        abc
+        <AllSettings/>
           
       </div>
     </div>
@@ -17,8 +17,9 @@
 <script>
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
+import AllSettings from '../components/AllSettings';
 
 export default {
-  components: { Navbar, Sidebar },
+  components: { Navbar, Sidebar, AllSettings },
 };
 </script>

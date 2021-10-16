@@ -14,6 +14,7 @@ import UserDetails from '../pages/UserDetails.vue';
 import UserEdit from '../pages/UserEdit.vue';
 import UserSettings from '../pages/UserSettings.vue';
 import Settings from '../pages/Settings.vue';
+import SettingsEdit from '../pages/SettingsEdit.vue';
 
 
 const routes = [
@@ -32,6 +33,7 @@ const routes = [
     { path: '/users/:id/edit', component: UserEdit },
     { path: '/user-settings', component: UserSettings },
     { path: '/settings', component: Settings },
+    { path: '/settings/:id/edit', component: SettingsEdit },
     // { path: '*', redirect: '/' },
 ];
 
