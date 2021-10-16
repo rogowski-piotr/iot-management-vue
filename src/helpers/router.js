@@ -12,6 +12,7 @@ import PlaceAdd from '../pages/PlaceAdd.vue';
 import PlaceDetails from '../pages/PlaceDetails.vue'
 import PlaceEdit from '../pages/PlaceEdit.vue'
 import Users from '../pages/Users.vue';
+import UserAdd from '../pages/UserAdd.vue';
 import UserDetails from '../pages/UserDetails.vue';
 import UserEdit from '../pages/UserEdit.vue';
 import UserSettings from '../pages/UserSettings.vue';
@@ -33,6 +34,7 @@ const routes = [
     { path: '/places/:id', component: PlaceDetails },
     { path: '/places/:id/edit', component: PlaceEdit },
     { path: '/users', component: Users },
+    { path: '/users/add', component: UserAdd },
     { path: '/users/:id', component: UserDetails },
     { path: '/users/:id/edit', component: UserEdit },
     { path: '/user-settings', component: UserSettings },

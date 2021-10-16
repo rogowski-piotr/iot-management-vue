@@ -6,6 +6,7 @@ export const userService = {
     getAll,
     getOne,
     getAllRoles,
+    add,
     update,
     deleteOne,
     getCurrentUser,
@@ -67,6 +68,17 @@ function getAllRoles() {
     };
     // return fetch(`http://192.168.0.102:8080/api_auth/users/roles`, requestOptions).then(handleResponse);
     return fetch(`http://192.168.0.18:8080/api_auth/users/roles`, requestOptions).then(handleResponse);
+}
+
+function add(payload) {
+    console.log('update')
+    const requestOptions = {
+        method: 'POST',
+        headers: authHeader(),
+        body: JSON.stringify(payload)
+    };
+    // return fetch(`http://192.168.0.102:8080/api_auth/users`, requestOptions);
+    return fetch(`http://192.168.0.18:8080/api_auth/users`, requestOptions);
 }
 
 function update(id, payload) {

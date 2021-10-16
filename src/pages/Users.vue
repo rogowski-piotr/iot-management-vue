@@ -7,6 +7,7 @@
 
         <h3>Users</h3>
         <hr/>
+        <a href="/users/add" type="button" class="btn btn-warning">Add new user</a>
         <AllUsers/>
           
       </div>
@@ -23,3 +24,8 @@ export default {
   components: { Navbar, Sidebar, AllUsers },
 };
 </script>
+<style scoped>
+  .btn {
+    margin: 15px;
+  }
+</style>
