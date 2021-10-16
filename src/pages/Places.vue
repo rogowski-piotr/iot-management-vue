@@ -26,3 +26,8 @@ export default {
   components: { Navbar, Sidebar, AllPlaces },
 };
 </script>
+<style scoped>
+  .btn {
+    margin-bottom: 15px;
+  }
+</style>

@@ -7,6 +7,7 @@
 
         <h3>Settings</h3>
         <hr/>
+        <a href="/settings/add" type="button" class="btn btn-warning">Add new settings</a>
         <AllSettings/>
           
       </div>
@@ -23,3 +24,8 @@ export default {
   components: { Navbar, Sidebar, AllSettings },
 };
 </script>
+<style scoped>
+  .btn {
+    margin-bottom: 15px;
+  }
+</style>
