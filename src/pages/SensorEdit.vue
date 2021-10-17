@@ -89,6 +89,43 @@
                 </tr>
             </table>
 
+            <table class="table table-hover text-center mt-5 mb-0">
+                <thead>
+                <tr>
+                    <th scope="col">Acceptable Consecutive Failures</th>
+                    <th scope="col">Cycles To Refresh</th>
+                    <th scope="col">Request Timeout</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td v-if="getSettingsById(sensor.sensorSettingsId) != null">{{ this.getSettingsById(this.sensor.sensorSettingsId).acceptableConsecutiveFailures }}</td>
+                        <td v-else v-html="noDataLabel"></td>
+
+                        <td v-if="getSettingsById(sensor.sensorSettingsId) != null">{{ this.getSettingsById(this.sensor.sensorSettingsId).cyclesToRefresh }}</td>
+                        <td v-else v-html="noDataLabel"></td>
+
+                        <td v-if="getSettingsById(sensor.sensorSettingsId) != null">{{ this.getSettingsById(this.sensor.sensorSettingsId).requestTimeout }} ms</td>
+                        <td v-else v-html="noDataLabel"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="table table-hover text-left mt-0">
+                <tr>
+                    <td></td>
+                    <th scope="row">Select a Setting</th>
+                    <td></td>
+                    <td>
+                        <select v-model="sensor.sensorSettingsId">
+                            <option v-for="option in optionItemsSettings" v-bind:key="option.id" :value="option.id">
+                                {{ option.name }}
+                            </option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+
             <br/>
             <div class="text-center">
                 <button @click="update" type="button" class="btn btn-primary">Update</button>
@@ -104,7 +141,7 @@
 <script>
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
-import { sensorService, measurementParamService, placeService } from '../services';
+import { sensorService, measurementParamService, placeService, sensorSettingsService } from '../services';
 
 export default {
     components: { Navbar, Sidebar },
@@ -113,6 +150,7 @@ export default {
             optionItemsMeasurementType: null,
             optionItemsMeasurementFrequencies: null,
             optionItemsPlaces: null,
+            optionItemsSettings: null,
 
             updateStatus: null,
 
@@ -123,8 +161,10 @@ export default {
                 isActive: null,
                 measurementType: null,
                 measurementsFrequency: null,
-                actualPosition: null
+                actualPosition: null,
+                sensorSettingsId: null
             },
+            noDataLabel: '<small>no data 😥</small>'
         }
     },
     created () {
@@ -137,6 +177,7 @@ export default {
                 this.sensor.measurementType = response.measurementType
                 this.sensor.measurementsFrequency = response.measurementsFrequency
                 this.sensor.actualPosition = response.actualPosition.id
+                this.sensor.sensorSettingsId = response.sensorSettings.id
             })
         
         measurementParamService.getAllTypes()
@@ -147,12 +188,22 @@ export default {
 
         placeService.getAll()
             .then(response => this.optionItemsPlaces = response)
+
+        sensorSettingsService.getAll()
+            .then(response => this.optionItemsSettings = response)
     },
     methods: {
         update() {
             sensorService.update(this.sensorId, this.sensor)
                 .then(response => this.updateStatus = response.status)
         },
+        getSettingsById(id) {
+            try {
+                return this.optionItemsSettings.find(el => el.id === id);
+            } catch (ignored) {
+                return null;
+            }
+        }
     }
 };
 </script>
