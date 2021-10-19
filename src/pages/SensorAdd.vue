@@ -140,6 +140,7 @@ export default {
             optionItemsMeasurementFrequencies: null,
             optionItemsPlaces: null,
             optionItemsSettings: null,
+            noDataLabel: '<small>no data 😥</small>',
 
             addStatus: null,
 
