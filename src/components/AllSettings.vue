@@ -3,10 +3,34 @@
         <table class="table table-hover text-center">
             <thead>
             <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Acceptable Consecutive Failures</th>
-                <th scope="col">Cycles To Refresh</th>
-                <th scope="col">Request Timeout</th>
+                <th scope="col">
+                    Name
+                    <div class="tooltip">
+                        <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                        <span class="tooltiptext">"default" settings must always exist. It is using if system can not find specific settings</span>
+                    </div>
+                </th>
+                <th scope="col">
+                    Acceptable Consecutive Failures 
+                    <div class="tooltip">
+                        <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                        <span class="tooltiptext">Defines the number of failed connections after which it will be classified as not active</span>
+                    </div>
+                </th>
+                <th scope="col">
+                    Cycles To Refresh
+                    <div class="tooltip">
+                        <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                        <span class="tooltiptext">Determines the number of cycles to connect to the sensor if it is not active</span>
+                    </div>
+                </th>
+                <th scope="col">
+                    Request Timeout
+                    <div class="tooltip">
+                        <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                        <span class="tooltiptext">Defines the number of failed connections after which it will be classified as not active</span>
+                    </div>
+                </th>
                 <th scope="col">Actions</th>
             </tr>
             </thead>
@@ -49,6 +73,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-</style>

@@ -6,7 +6,13 @@
                 <th scope="col">Name</th>
                 <th scope="col">Socket</th>
                 <th scope="col">Type</th>
-                <th scope="col">Active</th>
+                <th scope="col">
+                    Active
+                    <div class="tooltip">
+                        <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                        <span class="tooltiptext">Activity is automatically determined based on the selected settings</span>
+                    </div>
+                </th>
                 <th scope="col">Actions</th>
             </tr>
             </thead>
@@ -67,6 +73,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-</style>

@@ -30,7 +30,7 @@ function getOne(id) {
 }
 
 function add(sensor) {
-    console.log('update')
+    console.log('add sensor')
     const requestOptions = {
         method: 'POST',
         headers: authHeader(),

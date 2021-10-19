@@ -5,7 +5,13 @@
             <tr>
                 <th scope="col">Name</th>
                 <th scope="col">E-Mail</th>
-                <th scope="col">Role</th>
+                <th scope="col">
+                    Role
+                    <div class="tooltip">
+                        <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                        <span class="tooltiptext">The Admin role permit to manage of system users</span>
+                    </div>
+                </th>
                 <th scope="col">Actions</th>
             </tr>
             </thead>
@@ -51,6 +57,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-</style>
