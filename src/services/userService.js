@@ -12,6 +12,7 @@ export const userService = {
     deleteOne,
     getCurrentUser,
     updatePassword,
+    deleteAccount,
 };
 
 function login(name, password) {
@@ -124,6 +125,17 @@ function updatePassword(payload) {
     };
     // return fetch(`http://192.168.0.102:8080/api_auth/account/update-password/`, requestOptions);
     return fetch(`http://192.168.0.18:8080/api_auth/account/update-password/`, requestOptions)
+}
+
+function deleteAccount(payload) {
+    console.log('Deleting Account')
+    const requestOptions = {
+        method: 'DELETE',
+        headers: authHeader(),
+        body: JSON.stringify(payload)
+    };
+    // return fetch(`http://192.168.0.102:8080/api_auth/account/delete`, requestOptions);
+    return fetch(`http://192.168.0.18:8080/api_auth/account/delete`, requestOptions)
 }
 
 function handleResponse(response) {

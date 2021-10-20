@@ -69,13 +69,13 @@
                     <th scope="row">Confirm password</th>
                     <td></td>
                     <td>
-                        <input type="password" class="form-control" v-model="deleteAccountConfirmationPassowrd">
+                        <input type="password" class="form-control" v-model="deleteAccounePayload.password">
                     </td>
                 </tr>
             </table>
 
             <div class="text-center">
-                <button @click="update" type="button" class="btn btn-danger">Delete account</button>
+                <button @click="deleteAccount" type="button" class="btn btn-danger">Delete account</button>
             </div>
 
         </div>
@@ -100,6 +100,10 @@ export default {
               currentPassword: null,
               newPassword: null
           },
+          deleteAccounePayload: {
+              email: null,
+              password: null,
+          },
           repeatedPassword: null,
           deleteAccountConfirmationPassowrd: null,
           updateStatus: null,
@@ -107,6 +111,19 @@ export default {
       }
   },
   methods: {
+      deleteAccount() {
+          this.deleteAccounePayload.email = userService.getCurrentUser().email
+          userService.deleteAccount(this.deleteAccounePayload)
+              .then(response => {
+                  this.updateStatus = response.status
+                  if (response.status === 204) {
+                      router.push("/login")
+                  } else {
+                      return response.json()
+                  }
+              })
+              .then(errorMsg => this.errorMessage = this.parseErrorMsg(errorMsg))
+      },
       updatePassword() {
           this.resetPasswordPayload.email = userService.getCurrentUser().email
           if (! this.isPasswordValid()) {
