@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a href="#">forgot password?</a> or <a href="/signup">signup</a>
+                    <a href="/signup">signup</a> if you don't have an account
                 </div>
             </div>
         </div>

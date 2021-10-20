@@ -3,6 +3,7 @@ import { authHeader } from '../helpers/auth-header';
 export const userService = {
     login,
     logout,
+    register,
     getAll,
     getOne,
     getAllRoles,
@@ -38,6 +39,17 @@ function getCurrentUser() {
 function logout() {
     console.log('logout')
     localStorage.removeItem('user');
+}
+
+function register(payload) {
+    console.log('register')
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    };
+    // return fetch(`http://192.168.0.102:8080/register`, requestOptions);
+    return fetch(`http://192.168.0.18:8080/register`, requestOptions);
 }
 
 function getAll() {
