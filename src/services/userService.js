@@ -11,6 +11,7 @@ export const userService = {
     update,
     deleteOne,
     getCurrentUser,
+    updatePassword,
 };
 
 function login(name, password) {
@@ -112,6 +113,17 @@ function deleteOne(id) {
     };
     // return fetch(`http://192.168.0.102:8080/api_auth/users/` + id, requestOptions);
     return fetch(`http://192.168.0.18:8080/api_auth/users/` + id, requestOptions);
+}
+
+function updatePassword(payload) {
+    console.log('update')
+    const requestOptions = {
+        method: 'PUT',
+        headers: authHeader(),
+        body: JSON.stringify(payload)
+    };
+    // return fetch(`http://192.168.0.102:8080/api_auth/account/update-password/`, requestOptions);
+    return fetch(`http://192.168.0.18:8080/api_auth/account/update-password/`, requestOptions)
 }
 
 function handleResponse(response) {
