@@ -1,5 +1,6 @@
 import { authHeader } from '../helpers/auth-header';
 import { userService } from '.';
+import { getApiOrigin } from '../helpers/api-origin';
 
 export const placeService = {
     getAll,
@@ -15,8 +16,7 @@ function getAll() {
         method: 'GET',
         headers: authHeader()
     };
-    // return fetch(`http://192.168.0.102:8080/api_auth/places`, requestOptions).then(handleResponse);
-    return fetch(`http://192.168.0.18:8080/api_auth/places`, requestOptions).then(handleResponse);
+    return fetch(getApiOrigin() + `/api_auth/places`, requestOptions).then(handleResponse);
 }
 
 function getOne(id) {
@@ -25,8 +25,7 @@ function getOne(id) {
         method: 'GET',
         headers: authHeader()
     };
-    // return fetch(`http://192.168.0.102:8080/api_auth/sensors/` + id, requestOptions).then(handleResponse);
-    return fetch(`http://192.168.0.18:8080/api_auth/places/` + id, requestOptions).then(handleResponse);
+    return fetch(getApiOrigin() + `/api_auth/places/` + id, requestOptions).then(handleResponse);
 }
 
 function add(place) {
@@ -36,8 +35,7 @@ function add(place) {
         headers: authHeader(),
         body: JSON.stringify(place)
     };
-    // return fetch(`http://192.168.0.102:8080/api_auth/places`, requestOptions);
-    return fetch(`http://192.168.0.18:8080/api_auth/places`, requestOptions);
+    return fetch(getApiOrigin() + `/api_auth/places`, requestOptions);
 }
 
 function update(id, place) {
@@ -47,8 +45,7 @@ function update(id, place) {
         headers: authHeader(),
         body: JSON.stringify(place)
     };
-    // return fetch(`http://192.168.0.102:8080/api_auth/places/` + id, requestOptions);
-    return fetch(`http://192.168.0.18:8080/api_auth/places/` + id, requestOptions);
+    return fetch(getApiOrigin() + `/api_auth/places/` + id, requestOptions);
 }
 
 function deleteOne(id) {
@@ -57,8 +54,7 @@ function deleteOne(id) {
         method: 'DELETE',
         headers: authHeader(),
     };
-    // return fetch(`http://192.168.0.102:8080/api_auth/places/` + id, requestOptions);
-    return fetch(`http://192.168.0.18:8080/api_auth/places/` + id, requestOptions);
+    return fetch(getApiOrigin() + `/api_auth/places/` + id, requestOptions);
 }
 
 function handleResponse(response) {

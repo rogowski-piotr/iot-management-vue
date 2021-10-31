@@ -1,5 +1,6 @@
 import { authHeader } from '../helpers/auth-header';
 import { userService } from '.';
+import { getApiOrigin } from '../helpers/api-origin';
 
 export const sensorSettingsService = {
     getAll,
@@ -15,8 +16,7 @@ function getAll() {
         method: 'GET',
         headers: authHeader()
     };
-    // return fetch(`http://192.168.0.102:8080/api_auth/sensors/settings`, requestOptions).then(handleResponse);
-    return fetch(`http://192.168.0.18:8080/api_auth/sensors/settings`, requestOptions).then(handleResponse);
+    return fetch(getApiOrigin() + `/api_auth/sensors/settings`, requestOptions).then(handleResponse);
 }
 
 function getOne(id) {
@@ -25,8 +25,7 @@ function getOne(id) {
         method: 'GET',
         headers: authHeader()
     };
-    // return fetch(`http://192.168.0.102:8080/api_auth/sensors/settings/` + id, requestOptions).then(handleResponse);
-    return fetch(`http://192.168.0.18:8080/api_auth/sensors/settings/` + id, requestOptions).then(handleResponse);
+    return fetch(getApiOrigin() + `/api_auth/sensors/settings/` + id, requestOptions).then(handleResponse);
 }
 
 function deleteOne(id) {
@@ -35,8 +34,7 @@ function deleteOne(id) {
         method: 'DELETE',
         headers: authHeader(),
     };
-    // return fetch(`http://192.168.0.102:8080/api_auth/sensors/settings/` + id, requestOptions);
-    return fetch(`http://192.168.0.18:8080/api_auth/sensors/settings/` + id, requestOptions);
+    return fetch(getApiOrigin() + `/api_auth/sensors/settings/` + id, requestOptions);
 }
 
 function add(settings) {
@@ -46,8 +44,7 @@ function add(settings) {
         headers: authHeader(),
         body: JSON.stringify(settings)
     };
-    // return fetch(`http://192.168.0.102:8080/api_auth/sensors/settings`, requestOptions);
-    return fetch(`http://192.168.0.18:8080/api_auth/sensors/settings`, requestOptions);
+    return fetch(getApiOrigin() + `/api_auth/sensors/settings`, requestOptions);
 }
 
 function update(id, settings) {
@@ -57,8 +54,7 @@ function update(id, settings) {
         headers: authHeader(),
         body: JSON.stringify(settings)
     };
-    // return fetch(`http://192.168.0.102:8080/api_auth/sensors/settings/` + id, requestOptions);
-    return fetch(`http://192.168.0.18:8080/api_auth/sensors/settings/` + id, requestOptions);
+    return fetch(getApiOrigin() + `/api_auth/sensors/settings/` + id, requestOptions);
 }
 
 function handleResponse(response) {

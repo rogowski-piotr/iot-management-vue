@@ -1,5 +1,6 @@
 import { authHeader } from '../helpers/auth-header';
 import { userService } from '.';
+import { getApiOrigin } from '../helpers/api-origin';
 
 export const measurementService = {
     getLastMeasurements,
@@ -11,8 +12,7 @@ function getLastMeasurementsAll() {
         method: 'GET',
         headers: authHeader()
     };
-    // return fetch(`http://192.168.0.102:8080/api_auth/measurements`, requestOptions).then(handleResponse);
-    return fetch(`http://192.168.0.18:8080/api_auth/measurements`, requestOptions).then(handleResponse);
+    return fetch(getApiOrigin() + `/api_auth/measurements`, requestOptions).then(handleResponse);
 }
 
 function getLastMeasurements(id) {
@@ -20,8 +20,7 @@ function getLastMeasurements(id) {
         method: 'GET',
         headers: authHeader()
     };
-    // return fetch(`http://192.168.0.102:8080/api_auth/measurements?sensor_id=` + id, requestOptions).then(handleResponse);
-    return fetch(`http://192.168.0.18:8080/api_auth/measurements?sensor_id=` + id, requestOptions).then(handleResponse);
+    return fetch(getApiOrigin() + `/api_auth/measurements?sensor_id=` + id, requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {

@@ -1,5 +1,6 @@
 import { authHeader } from '../helpers/auth-header';
 import { userService } from '.';
+import { getApiOrigin } from '../helpers/api-origin';
 
 export const measurementParamService = {
     getAllTypes,
@@ -11,8 +12,7 @@ function getAllTypes() {
         method: 'GET',
         headers: authHeader()
     };
-    // return fetch(`http://192.168.0.102:8080/api_auth/measurements/available-types`, requestOptions).then(handleResponse);
-    return fetch(`http://192.168.0.18:8080/api_auth/measurements/available-types`, requestOptions).then(handleResponse);
+    return fetch(getApiOrigin() + `/api_auth/measurements/available-types`, requestOptions).then(handleResponse);
 }
 
 function getAllFrequencies() {
@@ -20,8 +20,7 @@ function getAllFrequencies() {
         method: 'GET',
         headers: authHeader()
     };
-    // return fetch(`http://192.168.0.102:8080/api_auth/measurements/available-frequencies`, requestOptions).then(handleResponse);
-    return fetch(`http://192.168.0.18:8080/api_auth/measurements/available-frequencies`, requestOptions).then(handleResponse);
+    return fetch(getApiOrigin() + `/api_auth/measurements/available-frequencies`, requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {

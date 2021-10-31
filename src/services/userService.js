@@ -1,4 +1,5 @@
 import { authHeader } from '../helpers/auth-header';
+import { getApiOrigin } from '../helpers/api-origin';
 
 export const userService = {
     login,
@@ -22,8 +23,7 @@ function login(name, password) {
         body: JSON.stringify({ name, password })
     };
 
-    // return fetch(`http://192.168.0.102:8080/login`, requestOptions)
-    return fetch(`http://192.168.0.18:8080/login`, requestOptions)
+    return fetch(getApiOrigin() + `/login`, requestOptions)
         .then(handleResponse)
         .then(user => {
             if (user) {
@@ -50,8 +50,7 @@ function register(payload) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
     };
-    // return fetch(`http://192.168.0.102:8080/register`, requestOptions);
-    return fetch(`http://192.168.0.18:8080/register`, requestOptions);
+    return fetch(getApiOrigin() + `/register`, requestOptions);
 }
 
 function getAll() {
@@ -60,8 +59,7 @@ function getAll() {
         method: 'GET',
         headers: authHeader()
     };
-    // return fetch(`http://192.168.0.102:8080/api_auth/users`, requestOptions).then(handleResponse);
-    return fetch(`http://192.168.0.18:8080/api_auth/users`, requestOptions).then(handleResponse);
+    return fetch(getApiOrigin() + `/api_auth/users`, requestOptions).then(handleResponse);
 }
 
 function getOne(id) {
@@ -70,8 +68,7 @@ function getOne(id) {
         method: 'GET',
         headers: authHeader()
     };
-    // return fetch(`http://192.168.0.102:8080/api_auth/users/` + id, requestOptions).then(handleResponse);
-    return fetch(`http://192.168.0.18:8080/api_auth/users/` + id, requestOptions).then(handleResponse);
+    return fetch(getApiOrigin() + `/api_auth/users/` + id, requestOptions).then(handleResponse);
 }
 
 function getAllRoles() {
@@ -80,8 +77,7 @@ function getAllRoles() {
         method: 'GET',
         headers: authHeader()
     };
-    // return fetch(`http://192.168.0.102:8080/api_auth/users/roles`, requestOptions).then(handleResponse);
-    return fetch(`http://192.168.0.18:8080/api_auth/users/roles`, requestOptions).then(handleResponse);
+    return fetch(getApiOrigin() + `/api_auth/users/roles`, requestOptions).then(handleResponse);
 }
 
 function add(payload) {
@@ -91,8 +87,7 @@ function add(payload) {
         headers: authHeader(),
         body: JSON.stringify(payload)
     };
-    // return fetch(`http://192.168.0.102:8080/api_auth/users`, requestOptions);
-    return fetch(`http://192.168.0.18:8080/api_auth/users`, requestOptions);
+    return fetch(getApiOrigin() + `/api_auth/users`, requestOptions);
 }
 
 function update(id, payload) {
@@ -102,8 +97,7 @@ function update(id, payload) {
         headers: authHeader(),
         body: JSON.stringify(payload)
     };
-    // return fetch(`http://192.168.0.102:8080/api_auth/users/` + id, requestOptions);
-    return fetch(`http://192.168.0.18:8080/api_auth/users/` + id, requestOptions)
+    return fetch(getApiOrigin() + `/api_auth/users/` + id, requestOptions)
 }
 
 function deleteOne(id) {
@@ -112,8 +106,7 @@ function deleteOne(id) {
         method: 'DELETE',
         headers: authHeader(),
     };
-    // return fetch(`http://192.168.0.102:8080/api_auth/users/` + id, requestOptions);
-    return fetch(`http://192.168.0.18:8080/api_auth/users/` + id, requestOptions);
+    return fetch(getApiOrigin() + `/api_auth/users/` + id, requestOptions);
 }
 
 function updatePassword(payload) {
@@ -123,8 +116,7 @@ function updatePassword(payload) {
         headers: authHeader(),
         body: JSON.stringify(payload)
     };
-    // return fetch(`http://192.168.0.102:8080/api_auth/account/update-password/`, requestOptions);
-    return fetch(`http://192.168.0.18:8080/api_auth/account/update-password/`, requestOptions)
+    return fetch(getApiOrigin() + `/api_auth/account/update-password/`, requestOptions)
 }
 
 function deleteAccount(payload) {
@@ -134,8 +126,7 @@ function deleteAccount(payload) {
         headers: authHeader(),
         body: JSON.stringify(payload)
     };
-    // return fetch(`http://192.168.0.102:8080/api_auth/account/delete`, requestOptions);
-    return fetch(`http://192.168.0.18:8080/api_auth/account/delete`, requestOptions)
+    return fetch(getApiOrigin() + `/api_auth/account/delete`, requestOptions)
 }
 
 function handleResponse(response) {
