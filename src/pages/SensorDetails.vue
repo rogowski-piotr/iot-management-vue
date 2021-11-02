@@ -52,7 +52,7 @@
                     <td></td>
                     <th scope="row">Last Measurment</th>
                     <td></td>
-                    <td colspan="2" v-if="sensor.lastMeasurment">{{ this.sensor.lastMeasurment }}</td>
+                    <td colspan="2" v-if="sensor.lastMeasurment">{{ this.getTime(this.sensor.lastMeasurment) }}</td>
                     <td colspan="2" v-else v-html="noDataLabel"></td>
                 </tr>
                 <tr>
@@ -147,6 +147,12 @@ export default {
                 this.sensor.sensorSettings.cyclesToRefresh = response.sensorSettings.cyclesToRefresh
                 this.sensor.sensorSettings.requestTimeout = response.sensorSettings.requestTimeout
             })
+    },
+    methods: {
+        getTime: function(datetime) {
+            let _datetime = new Date(datetime);
+            return _datetime.toLocaleString("pl-PL");
+        },
     }
 };
 </script>
