@@ -5,11 +5,17 @@
       <Sidebar currentElement="sensors"/>
       <div class="col-md-9 ml-sm-auto col-lg-10 p-4">
 
-        <h3>Sensor Measurements</h3>
+        <h3>Sensor Measurements Charts</h3>
         <hr/>
         <a href="/sensors"><i class="fa fa-chevron-left" aria-hidden="true"></i> back</a>
         <hr/>
-        <LastMeasurementTable v-bind:sensorId="this.sensorId"/>
+        <div v-if="sensorType === 'SOIL_MOISTURE'">
+          <ChartSensor v-bind:info='{sensorId: this.sensorId, type: "SOIL_MOISTURE"}' :width="85" :height="40"/>
+        </div>
+        <div v-if="sensorType === 'TEMPERATURE_AND_HUMIDITY'">
+          <ChartSensor v-bind:info='{sensorId: this.sensorId, type: "HUMIDITY"}' :width="85" :height="20"/>
+          <ChartSensor v-bind:info='{sensorId: this.sensorId, type: "TEMPERATURE"}' :width="85" :height="20"/>
+        </div>
           
       </div>
     </div>
@@ -19,11 +25,11 @@
 <script>
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
-import LastMeasurementTable from '../components/LastMeasurementTable';
+import ChartSensor from '../components/ChartSensor';
 import { sensorService } from '../services';
 
 export default {
-  components: { Navbar, Sidebar, LastMeasurementTable },
+  components: { Navbar, Sidebar, ChartSensor },
   data () {
         return {
             sensorId: null,

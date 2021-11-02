@@ -28,14 +28,22 @@ import { measurementService } from '../services';
 
 export default {
     name: 'LastMeasurementTable',
+    props: {
+        sensorId: String
+    },
     data () {
         return {
             lastMeasurements: [],
         }
     },
     mounted () {
-        measurementService.getLastMeasurementsAll()
-            .then(response => this.lastMeasurements = response);
+        if (this.sensorId) {
+            measurementService.getLastMeasurements(this.sensorId)
+                .then(response => this.lastMeasurements = response);
+        } else {
+            measurementService.getLastMeasurementsAll()
+                .then(response => this.lastMeasurements = response);
+        }
     },
     methods: {
         getTime: function(datetime) {

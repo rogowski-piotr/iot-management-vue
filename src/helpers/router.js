@@ -6,6 +6,7 @@ import Sensors from '../pages/Sensors.vue'
 import SensorAdd from '../pages/SensorAdd.vue'
 import SensorDetails from '../pages/SensorDetails.vue'
 import SensorEdit from '../pages/SensorEdit.vue'
+import SensorMeasurementsCharts from '../pages/SensorMeasurementsCharts.vue';
 import SensorMeasurements from '../pages/SensorMeasurements.vue';
 import Places from '../pages/Places.vue';
 import PlaceAdd from '../pages/PlaceAdd.vue';
@@ -30,6 +31,7 @@ const routes = [
     { path: '/sensors/:id', component: SensorDetails },
     { path: '/sensors/:id/edit', component: SensorEdit },
     { path: '/sensors/:id/measurements', component: SensorMeasurements },
+    { path: '/sensors/:id/measurements/charts', component: SensorMeasurementsCharts },
     { path: '/places', component: Places },
     { path: '/places/add', component: PlaceAdd },
     { path: '/places/:id', component: PlaceDetails },
