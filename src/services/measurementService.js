@@ -20,7 +20,7 @@ function getLastMeasurements(id) {
         method: 'GET',
         headers: authHeader()
     };
-    return fetch(getApiOrigin() + `/api_auth/measurements?sensor_id=` + id, requestOptions).then(handleResponse);
+    return fetch(getApiOrigin() + `/api_auth/measurements?sensor_id=` + id + '&item_limit=30', requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {

@@ -31,7 +31,13 @@ export default defineComponent({
                         labels.push(measurement.date)
                     }
                 });
-                labels.reverse();
+
+                labels = labels
+                    .map(d => {
+                        let datetime = new Date(d);
+                        return datetime.getHours() + ':' + datetime.getMinutes();
+                    })
+                    .reverse();
 
                 let datasets = this.generateDatasets(response)
 
@@ -44,7 +50,7 @@ export default defineComponent({
                 
                 this.renderChart({
                     labels: labels,
-                    datasets: [datasets[dataset_index]]
+                    datasets: [datasets[dataset_index]],
                 })
             });
   },
