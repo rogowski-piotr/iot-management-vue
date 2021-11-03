@@ -2,22 +2,45 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <table class="table table-hover text-center">
-                    <thead>
-                    <tr>
-                        <th scope="col">Date</th>
-                        <th scope="col">Sensor</th>
-                        <th scope="col">Value</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr v-for="measurement in lastMeasurements" :key="measurement.id">
-                        <td><div class="time-text">{{ this.getTime(measurement.date) }}</div><br/>{{ this.getDate(measurement.date) }}</td>
-                        <td>{{ this.transformSensorName(measurement.measurementType, measurement.sensorName) }}</td>
-                        <td><div class="font-weight-bold">{{ this.transformValue(measurement.measurementType, measurement.value) }}</div></td>
-                    </tr>
-                    </tbody>
-                </table>
+
+                <div v-if="this.sensorId">
+                    <table class="table table-hover text-center">
+                        <thead>
+                        <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Value</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="measurement in lastMeasurements" :key="measurement.id">
+                            <td><div class="time-text">{{ this.getTime(measurement.date) }}</div><br/>{{ this.getDate(measurement.date) }}</td>
+                            <td>{{ measurement.measurementType + " " + this.transformSensorName(measurement.measurementType, "") }}</td>
+                            <td><div class="font-weight-bold">{{ this.transformValue(measurement.measurementType, measurement.value) }}</div></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div v-else>
+                    <table class="table table-hover text-center">
+                        <thead>
+                        <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">Sensor</th>
+                            <th scope="col">Value</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="measurement in lastMeasurements" :key="measurement.id">
+                            <td><div class="time-text">{{ this.getTime(measurement.date) }}</div><br/>{{ this.getDate(measurement.date) }}</td>
+                            <td>{{ this.transformSensorName(measurement.measurementType, measurement.sensorName) }}</td>
+                            <td><div class="font-weight-bold">{{ this.transformValue(measurement.measurementType, measurement.value) }}</div></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         </div>
     </div>
@@ -29,7 +52,9 @@ import { measurementService } from '../services';
 export default {
     name: 'LastMeasurementTable',
     props: {
-        sensorId: String
+        sensorId: String,
+        dateFrom: Date,
+        dateTo: Date,
     },
     data () {
         return {
@@ -37,10 +62,23 @@ export default {
         }
     },
     mounted () {
-        if (this.sensorId) {
+        if (this.sensorId && (this.dateFrom || this.dateTo)) {
+            console.log('fetch for sensor in date range')
+            measurementService.getLastMeasurementsInDateRange(this.sensorId, this.dateFrom, this.dateTo)
+                .then(response => this.lastMeasurements = response);
+
+        } else if (this.dateFrom || this.dateTo) {
+            console.log('fetch in date range')
+            measurementService.getLastMeasurementsAllInDateRange(this.dateFrom, this.dateTo)
+                .then(response => this.lastMeasurements = response);
+
+        } else if (this.sensorId) {
+            console.log('fetch for sensor')
             measurementService.getLastMeasurements(this.sensorId)
                 .then(response => this.lastMeasurements = response);
+
         } else {
+            console.log('fetch all last')
             measurementService.getLastMeasurementsAll()
                 .then(response => this.lastMeasurements = response);
         }
