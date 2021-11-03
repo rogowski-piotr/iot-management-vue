@@ -9,12 +9,34 @@
         <hr/>
         <a href="/sensors"><i class="fa fa-chevron-left" aria-hidden="true"></i> back</a>
         <hr/>
-        <div v-if="sensorType === 'SOIL_MOISTURE'">
-          <ChartSensor v-bind:info='{sensorId: this.sensorId, type: "SOIL_MOISTURE"}' :width="85" :height="40"/>
+
+        <div class="row" justify-content-center>
+          <div class="span6 mb-2" style="float: none; margin: auto;">
+            <input type="datetime-local" class="mx-2 pb-1" v-model="dateFrom">
+            <input type="datetime-local" class="mx-2 pb-1" v-model="dateTo">
+          </div>
         </div>
+
+        <div v-if="sensorType === 'SOIL_MOISTURE'">
+          <ChartSensor 
+            :width="85" :height="40"
+            v-bind:info='{sensorId: this.sensorId, type: "SOIL_MOISTURE"}'
+            v-bind:dateFrom="new Date(this.dateFrom)" 
+            v-bind:dateTo="new Date(this.dateTo)"/>
+        </div>
+
         <div v-if="sensorType === 'TEMPERATURE_AND_HUMIDITY'">
-          <ChartSensor v-bind:info='{sensorId: this.sensorId, type: "HUMIDITY"}' :width="85" :height="20"/>
-          <ChartSensor v-bind:info='{sensorId: this.sensorId, type: "TEMPERATURE"}' :width="85" :height="20"/>
+          <ChartSensor 
+            :width="85" :height="20"
+            v-bind:info='{sensorId: this.sensorId, type: "HUMIDITY"}' 
+            v-bind:dateFrom="new Date(this.dateFrom)" 
+            v-bind:dateTo="new Date(this.dateTo)"/>
+
+          <ChartSensor 
+            :width="85" :height="20"
+            v-bind:info='{sensorId: this.sensorId, type: "TEMPERATURE"}'
+            v-bind:dateFrom="new Date(this.dateFrom)" 
+            v-bind:dateTo="new Date(this.dateTo)"/>
         </div>
           
       </div>
@@ -34,6 +56,8 @@ export default {
         return {
             sensorId: null,
             sensorType: null,
+            dateFrom: new Date().toISOString().split('T')[0] + 'T00:00',
+            dateTo: new Date(new Date().toString().split('GMT')[0]+' UTC').toISOString().split('.')[0],
         }
     },
     created () {

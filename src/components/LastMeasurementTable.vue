@@ -63,22 +63,18 @@ export default {
     },
     mounted () {
         if (this.sensorId && (this.dateFrom || this.dateTo)) {
-            console.log('fetch for sensor in date range')
             measurementService.getLastMeasurementsInDateRange(this.sensorId, this.dateFrom, this.dateTo)
                 .then(response => this.lastMeasurements = response);
 
         } else if (this.dateFrom || this.dateTo) {
-            console.log('fetch in date range')
             measurementService.getLastMeasurementsAllInDateRange(this.dateFrom, this.dateTo)
                 .then(response => this.lastMeasurements = response);
 
         } else if (this.sensorId) {
-            console.log('fetch for sensor')
             measurementService.getLastMeasurements(this.sensorId)
                 .then(response => this.lastMeasurements = response);
 
         } else {
-            console.log('fetch all last')
             measurementService.getLastMeasurementsAll()
                 .then(response => this.lastMeasurements = response);
         }
