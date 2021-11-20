@@ -27,10 +27,10 @@
             <div class="carousel-item">
               <div class="row">
                 <div class="col-md-4">
-                  <ChartSensor v-bind:info='{sensorId: 2, type: "TEMPERATURE"}' :width="100" :height="100"/>
+                  <ChartSensor v-bind:info='{sensorId: 3, type: "TEMPERATURE"}' :width="100" :height="100"/>
                 </div>
                 <div class="col-md-4">
-                  <ChartSensor v-bind:info='{sensorId: 2, type: "HUMIDITY"}' :width="100" :height="100"/>
+                  <ChartSensor v-bind:info='{sensorId: 3, type: "HUMIDITY"}' :width="100" :height="100"/>
                 </div>
                 <div class="col-md-4">
                   <ChartSensor v-bind:info='{sensorId: 1, type: "SOIL_MOISTURE"}' :width="100" :height="100"/>
