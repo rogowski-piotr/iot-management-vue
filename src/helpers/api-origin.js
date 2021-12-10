@@ -3,7 +3,8 @@ export function getApiOrigin() {
 
     switch(origin) {
         case "http://localhost":
-            return 'http://192.168.0.18:8080';
+            return 'http://localhost:8080';
+            // return 'http://192.168.0.18:8080';
 
         case "http://192.168.0.18":
             return 'http://192.168.0.18:8080';
