@@ -1,6 +1,6 @@
 # iot-management-vue
 
-## Project setup
+## Quick Start
 ```
 npm install
 ```
@@ -15,10 +15,7 @@ npm run serve -- --port 3000
 npm run build
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Project overview
+<p align="center">
+  <img width="100%" height="100%" src="resources/demonstration.gif">
+</p>
